@@ -4,6 +4,7 @@
 int main(void) {
 	int* a = malloc(sizeof(int));
 	*a = 10;
+	free(a);
 	printf("Hola mundo: %d\n", *a);
 	printf("Hola mundo: %p\n", a);
 	return 0;
