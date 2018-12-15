@@ -6,5 +6,6 @@ int main(void) {
 	*a = 10;
 	printf("Hola mundo: %d\n", *a);
 	printf("Hola mundo: %p\n", a);
+	free(a);
 	return 0;
 }
