@@ -7,7 +7,7 @@ int suma_mas_corto(int v1[], int n1, int v2[], int n2) {
 	else if (n2 < n1) min = n2;
 	
 	int suma = 0;
-	for (int i = 0; i < min; i++) {
+	for (int i = 0; i < min && i < n1 && i < n2; i++) {
 		suma += v1[i] + v2[i];
 	}
 	return suma;
