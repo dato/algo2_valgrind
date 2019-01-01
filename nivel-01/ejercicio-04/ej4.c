@@ -2,8 +2,9 @@
 
 // Suma los elementos de ambos arreglos hasta que alguno de los arreglos se acabe
 int suma_mas_corto(int v1[], int n1, int v2[], int n2) {
-	int suma;
+	int suma = 0;
 	for (int i = 0; i < n1; i++) {
+		if (i > n2) break;
 		suma += v1[i] + v2[i];
 	}
 	return suma;
