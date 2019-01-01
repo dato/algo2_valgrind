@@ -8,10 +8,10 @@ struct punto {
 
 
 punto_t* punto_crear(double x, double y) {
-    punto_t* punto = malloc(sizeof(punto));
-    punto->x = x;
-    punto->y = y;    
-    return punto;    
+	punto_t punto;
+    punto.x = x;
+    punto.y = y;    
+    return &punto;    
 }
 
 double punto_obtener_x(punto_t* punto) {
