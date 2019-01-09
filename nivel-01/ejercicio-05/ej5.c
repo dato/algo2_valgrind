@@ -16,7 +16,7 @@ int suma_mas_corto(int v1[], int n1, int v2[], int n2) {
 
 int main(void) {
 	int arr1[] = {1, 2, 3, 1, 2, 3, 1, 2, 3};
-	int arr2[] = {1, 5, 0, 13}
+	int arr2[] = {1, 5, 0, 13};
 	printf("Resultado de sumar todos los elementos: %d\n", suma_mas_corto(arr1, 9, arr2, 4));
 	printf("Resultado de sumar si tengo arreglos de mismo largo: %d\n", suma_mas_corto(arr1, 4, arr2, 4));
 	printf("Resultado de sumar si alguno de los arreglos tiene largo 0: %d\n", suma_mas_corto(arr1, 0, arr2, 4));
