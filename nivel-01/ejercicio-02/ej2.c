@@ -5,20 +5,20 @@
 #define TAM 10
 
 void rellenar_arreglo(int* arr, size_t n) {
-	for (size_t i = 1; i <= n; i++) {
+	for (size_t i = 0; i < n; i++) {
 		arr[i] = i;
 	}
 }
 
 void imprimir_arreglo(int* arr, size_t n) {
-	for (size_t i = 1; i <= n; i++) {
+	for (size_t i = 0; i < n; i++) {
 		printf("%d\n", arr[i]);
 	}
 }
 
 bool esta_ordenado(int* arr, size_t n) {
-	for (size_t i = 0; i < n; i++) {
-		if (arr[i] > arr[i+1]) {
+	for (size_t i = 1; i < n; i++) {
+		if (arr[i] > arr[i-1]) {
 			return false;
 		}
 	}
