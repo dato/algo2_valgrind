@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stddef.h>
+#include <stdbool.h>
 #define TAM 10
 
 void rellenar_arreglo(int* arr, size_t n) {
@@ -27,13 +28,14 @@ bool esta_ordenado(int* arr, size_t n) {
 
 int main(void) {
 	int* arreglo = malloc(sizeof(int) * TAM);
-	rellenar_arreglo(arr, TAM);
-	imprimir_arreglo(arr, TAM);
-	if (esta_ordenado(arr, TAM)) {
+	rellenar_arreglo(arreglo, TAM);
+	imprimir_arreglo(arreglo, TAM);
+	if (esta_ordenado(arreglo, TAM)) {
 		printf("El arreglo esta ordenado\n");
 	} else {
 		printf("El arreglo no esta ordenado\n");
 	}
+	free(arreglo);
 	return 0;
 }
 
