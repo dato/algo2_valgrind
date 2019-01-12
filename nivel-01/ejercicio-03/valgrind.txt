@@ -1,0 +1,32 @@
+==7734== Memcheck, a memory error detector
+==7734== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==7734== Using Valgrind-3.14.0 and LibVEX; rerun with -h for copyright info
+==7734== Command: ./ej03
+==7734== 
+==7734== Invalid write of size 8
+==7734==    at 0x4011CA: punto_crear (punto.c:13)
+==7734==    by 0x401165: main (ej3.c:5)
+==7734==  Address 0x4a2f048 is 0 bytes after a block of size 8 alloc'd
+==7734==    at 0x483577F: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7734==    by 0x4011B9: punto_crear (punto.c:11)
+==7734==    by 0x401165: main (ej3.c:5)
+==7734== 
+==7734== Invalid read of size 8
+==7734==    at 0x4011F0: punto_obtener_y (punto.c:22)
+==7734==    by 0x401184: main (ej3.c:8)
+==7734==  Address 0x4a2f048 is 0 bytes after a block of size 8 alloc'd
+==7734==    at 0x483577F: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==7734==    by 0x4011B9: punto_crear (punto.c:11)
+==7734==    by 0x401165: main (ej3.c:5)
+==7734== 
+La coordenada x del punto es: 3.200000
+La coordenada y del punto es: 4.100000
+==7734== 
+==7734== HEAP SUMMARY:
+==7734==     in use at exit: 0 bytes in 0 blocks
+==7734==   total heap usage: 2 allocs, 2 frees, 4,104 bytes allocated
+==7734== 
+==7734== All heap blocks were freed -- no leaks are possible
+==7734== 
+==7734== For counts of detected and suppressed errors, rerun with: -v
+==7734== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
