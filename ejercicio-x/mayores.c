@@ -53,7 +53,6 @@ static bool persona_nombre(struct persona *p) {
 //
 static bool persona_edad(struct persona *p) {
     char *substr = strchr(p->linea_csv, ',');
-    int d, m, y;
 
     if (!substr) {
         return false;
@@ -63,12 +62,13 @@ static bool persona_edad(struct persona *p) {
     }
 
     /*
-    sscanf(substr, "%d-%d-%d", &y, &m, &d);
-    */
+     * TODO: cálculo verdadero de la edad;
+     * int d, m, y;
+     * sscanf(substr, "%d-%d-%d", &y, &m, &d);
+     */
 
-    // XXX B)
+    // XXX Hack para conseguir los errores de Valgrind.
     if (!(*substr >= '0' && *substr <= '9')) {
-        printf("edad falsa=%s\n", substr);
         return false;
     }
     if (*substr == '2') {
@@ -87,7 +87,7 @@ static void free_persona(void *ptr) {
     struct persona *p = ptr;
     free(p->nombre);
     if (p->apellido && strlen(p->apellido) == 0) {
-        // No había apellido e hicimos strdup("");
+        // No había apellido e hicimos strdup("").
         free(p->apellido);
     }
     free(p->linea_csv);
@@ -101,16 +101,14 @@ static void free_persona(void *ptr) {
 static bool leer_persona(char *linea, struct persona *per) {
     per->linea_csv = linea;
 
-    if (persona_edad(per)) {
-        if (persona_nombre(per)) {
-            if (per->edad >= 18) {
-                per->linea_csv = NULL;
-                return true;
-            }
-            else {
-                per->linea_csv = NULL;
-                return false; // Menor de edad.
-            }
+    if (persona_edad(per) && persona_nombre(per)) {
+        if (per->edad >= 18) {
+            per->linea_csv = NULL;
+            return true;
+        }
+        else {
+            per->linea_csv = NULL;
+            return false; // Menor de edad.
         }
     }
 
@@ -152,11 +150,6 @@ int main(int argc, char *argv[]) {
                 free(per);
             }
         }
-        // Verificar que la línea es válida antes de continuar.
-        // if (per->linea_csv != NULL) {
-        //     size = 0;
-        //     linea = NULL;
-        // }
     }
     lista_iter_t *iter = lista_iter_crear(personas);
 
